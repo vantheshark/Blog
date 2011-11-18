@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.txt = Readme.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net35", "Net35", "{4BB37D37-5928-43F4-A0FE-9ECA4BC5B948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF.Validation.Engine", "Net35\WCF.Validation.Engine\WCF.Validation.Engine.csproj", "{F551FD5A-0006-4A6D-A25B-9CBD63B16367}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,8 +80,21 @@ Global
 		{F1B67018-1906-420E-8D04-1EA8EBF337DE}.Release|Mixed Platforms.Build.0 = Release|x86
 		{F1B67018-1906-420E-8D04-1EA8EBF337DE}.Release|x86.ActiveCfg = Release|x86
 		{F1B67018-1906-420E-8D04-1EA8EBF337DE}.Release|x86.Build.0 = Release|x86
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F551FD5A-0006-4A6D-A25B-9CBD63B16367} = {4BB37D37-5928-43F4-A0FE-9ECA4BC5B948}
 	EndGlobalSection
 EndGlobal
