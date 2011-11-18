@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>WCF.Validation.Engine</id>
+    <version>1.0</version>
+    <authors>Van Thoai Nguyen</authors>
+    <owners>Van Thoai Nguyen</owners>
+    <licenseUrl>http://sam.zoy.org/wtfpl/COPYING</licenseUrl>
+    <projectUrl>http://thoai-nguyen.blogspot.com/2011/11/wcf-validation-with-data-annotation.html</projectUrl>
+    <iconUrl>http://img257.imageshack.us/img257/8724/validation.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>A lightweight extensible library to support validation in WCF.</summary>    
+	<description>The "WCF Validation Engine" is a lightweight extensible library to support validation in WCF. It's implementation is strongly based on ASP.NET MVC Source code , that means if you has already familiar with ModelMetatadata, ModelMetadataProvider, ModelValidatorProvider, ModelValidator, you will find it works the same way.</description>
+    <releaseNotes>This package has DataAnnotationsModelValidator built-in</releaseNotes>
+    <copyright>Copyright 2011</copyright>
+    <tags>WCF Validation DataAnnotation</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>

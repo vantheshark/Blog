@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WCF.Validation.Engine")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The \"WCF Validation Engine\" is a lightweight extensible library to support validation in WCF. It's implementation is strongly based on ASP.NET MVC Source code , that means if you has already familiar with ModelMetatadata, ModelMetadataProvider, ModelValidatorProvider, ModelValidator, you will find it works the same way.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Van Thoai Nguyen")]
 [assembly: AssemblyProduct("WCF.Validation.Engine")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCopyright("Copyright © Van Thoai Nguyen 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
