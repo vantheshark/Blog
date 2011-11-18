@@ -4,7 +4,7 @@ using System.ServiceModel.Dispatcher;
 
 namespace WCF.Validation.Engine
 {
-    internal class ParameterValidatorBehavior : IParameterInspector
+    public class ParameterValidatorBehavior : IParameterInspector
     {
         public bool ThrowErrorOnFirstError { get; set; }
         public bool ThrowErrorAfterValidation { get; set; }
@@ -14,8 +14,6 @@ namespace WCF.Validation.Engine
             ThrowErrorOnFirstError = throwErrorOnFirstError;
             ThrowErrorAfterValidation = throwErrorAfterValidation;
         }
-
-        //public ModelStateDictionary ModelState { get; set; }
 
         public void AfterCall(string operationName, object[] outputs, object returnValue, object correlationState)
         {
@@ -31,10 +29,8 @@ namespace WCF.Validation.Engine
                 {
                     serviceIntance.ModelState = new ModelState();
                 }
-                if (serviceIntance.ModelState.Errors == null)
-                {
-                    serviceIntance.ModelState.Errors = new List<ModelError>();
-                }
+                serviceIntance.ModelState.Errors = new List<ModelError>();
+                
 
                 IEnumerable<ModelValidationResult> validationResults = new ModelValidationResult[] { };
                 foreach (object input in inputs)
@@ -53,11 +49,7 @@ namespace WCF.Validation.Engine
                                 throw new FaultException<ValidationFault>(new ValidationFault(new[] { temp }), "Validation error");
                             }
 
-                            serviceIntance.ModelState.Errors.Add(new ModelError
-                            {
-                                MemberName = temp.MemberName,
-                                Message = temp.Message
-                            });
+                            AddModelError(serviceIntance, temp);
                         }
                     }
                 }
@@ -67,6 +59,15 @@ namespace WCF.Validation.Engine
                 }
             }
             return null;
+        }
+
+        protected virtual void AddModelError(IHasModelStateService serviceIntance, ModelValidationResult temp)
+        {
+            serviceIntance.ModelState.Errors.Add(new ModelError
+            {
+                MemberName = temp.MemberName,
+                Message = temp.Message,
+            });
         }
     }    
 }

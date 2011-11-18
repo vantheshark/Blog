@@ -11,5 +11,14 @@ namespace WCF.Validation.Engine
             Console.WriteLine(text, args);
             Console.ForegroundColor = currentColor;
         }
+
+
+        public static void Write(ConsoleColor color, string text, params object[] args)
+        {
+            ConsoleColor currentColor = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+            Console.Write(text, args);
+            Console.ForegroundColor = currentColor;
+        }
     }
 }

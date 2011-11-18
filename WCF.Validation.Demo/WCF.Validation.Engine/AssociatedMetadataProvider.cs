@@ -52,11 +52,16 @@ namespace WCF.Validation.Engine
             Check.Requires<ArgumentNullException>(modelType != null);
 
             ICollection<Attribute> a = new List<Attribute>();
-            GetPropertyDescriptors(modelType).ToList().ForEach(x => a.Union(x.Attributes.Cast<Attribute>()));
 
-            var attributes = a.AsEnumerable();
+            //GetPropertyDescriptors(modelType).ToList().ForEach(x => a.Union(x.Attributes.Cast<Attribute>()));
+
+            var typeAttributes = TypeDescriptorHelper.Get(modelType).GetAttributes();
+            for(var i=0; i< typeAttributes.Count; i++)
+            {
+                a.Add(typeAttributes[i]);
+            }
             
-            ModelMetadata result = CreateMetadata(attributes, null /* containerType */, modelAccessor, modelType, null /* propertyName */);
+            ModelMetadata result = CreateMetadata(a, null /* containerType */, modelAccessor, modelType, null /* propertyName */);
             return result;
         }
 

@@ -37,17 +37,27 @@ namespace WCF.Validation.Engine
 
             public override IEnumerable<ModelValidationResult> Validate(object container)
             {
+                if (container == null /* Root object */)
+                {
+                    var validators =  ModelValidatorProviders.Providers.GetValidators(Metadata);
+                    foreach (ModelValidator typeValidator in validators)
+                    {
+                        foreach (ModelValidationResult typeResult in typeValidator.Validate(Metadata.ModelValue))
+                        {
+                            yield return typeResult;
+                        }
+                    }
+                }
+
+
                 foreach (ModelMetadata propertyMetadata in Metadata.Properties)
                 {
                     foreach (ModelValidator propertyValidator in propertyMetadata.GetValidators())
                     {
                         foreach (ModelValidationResult propertyResult in propertyValidator.Validate(Metadata.ModelValue))
                         {
-                            yield return new ModelValidationResult
-                            {
-                                MemberName = propertyResult.MemberName ?? propertyMetadata.FullName,
-                                Message = propertyResult.Message
-                            };
+                            propertyResult.MemberName = propertyResult.MemberName ?? propertyMetadata.FullName;
+                            yield return propertyResult;
                         }
                     }
                 }

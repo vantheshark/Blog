@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace WCF.Validation.Engine
 {
@@ -36,13 +37,6 @@ namespace WCF.Validation.Engine
             }
         }
 
-        internal static ModelValidator Create(ModelMetadata metadata, ValidationAttribute attribute)
-        {
-            return new DataAnnotationsModelValidator(metadata, attribute);
-        }
-
-       
-
         public override IEnumerable<ModelValidationResult> Validate(object container)
         {
             // Per the WCF RIA Services team, instance can never be null (if you have
@@ -53,11 +47,17 @@ namespace WCF.Validation.Engine
             ValidationResult result = Attribute.GetValidationResult(Metadata.ModelValue, context);
             if (result != ValidationResult.Success)
             {
-                yield return new ModelValidationResult
-                {
-                    Message = result.ErrorMessage
-                };
+                yield return GetModelValidationResult(result);
             }
+        }
+
+        protected virtual ModelValidationResult GetModelValidationResult(ValidationResult result)
+        {
+            return new ModelValidationResult
+            {
+                Message = result.ErrorMessage,
+                MemberName = Metadata.FullName + (string.IsNullOrEmpty(Metadata.PropertyName) && result.MemberNames != null && result.MemberNames.Count() > 0 ? "." + result.MemberNames.FirstOrDefault() : string.Empty)
+            };
         }
     }
 }

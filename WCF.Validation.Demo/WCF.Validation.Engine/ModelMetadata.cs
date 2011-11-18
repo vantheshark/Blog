@@ -121,12 +121,13 @@ namespace WCF.Validation.Engine
         private IEnumerable<ModelValidator> GetValidatorForOtherComplexTypes()
         {
             return ModelValue != null 
-                              ? new[] { ModelValidator.GetModelValidator(this) }
+                              ? ModelValidatorProviders.Providers.GetValidators(this).Union(new [] { ModelValidator.GetModelValidator(this)}) // composit + other validators for it's attributes
                               : GetValidatorForNullModel();
         }
 
         protected virtual IEnumerable<ModelValidator> GetValidatorForNullModel()
         {
+            // NOTE: The base model metadata will not need validation on null
             return Enumerable.Empty<ModelValidator>();
         }
     }
