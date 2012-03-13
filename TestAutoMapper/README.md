@@ -1,0 +1,1 @@
+## This folder contains source code & demo for [post Autofac, AutoMapper and custom converter with dependency injection](http://thoai-nguyen.blogspot.com.au/2011/10/autofac-automapper-custom-converter-di.html)
